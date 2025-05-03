@@ -2,11 +2,10 @@ package com.micro.graphs.controllers;
 
 import com.micro.graphs.nodes.Account;
 import com.micro.graphs.services.AccountService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-@RestController
+@RestController("/graphs")
 public class AccountController {
 
     private final AccountService accountService;
@@ -15,8 +14,13 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping("/accountNumber")
-    public Mono<Account> getAccount(String accountNumber) {
+    @GetMapping(value = "/accountNumber/{accountNumber}")
+    public Mono<Account> getAccount(@PathVariable("accountNumber") String accountNumber) {
         return Mono.just(accountService.findByAccountNumber(accountNumber));
+    }
+
+    @GetMapping("/")
+    public Mono<String> getTest() {
+        return Mono.just("Test");
     }
 }

@@ -1,0 +1,42 @@
+openapi: 3.0.4
+info:
+  title: Graphs microservice
+  description: Provides endpoints for neo4j queries
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:4200
+    description: development local server
+
+paths:
+  /graphs/accountNumber/{accountNumber}:
+    parameters:
+      - name: accountNumber
+        in: path
+        description: accountNumber
+        required: true
+        schema:
+          type: string
+    get:
+      summary: simple test get
+      tags:
+        - graphs
+      description: simple test get
+      operationId: getAccount
+      responses:
+        "200":
+          description: return the account
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+        accountNumber:
+          type: string

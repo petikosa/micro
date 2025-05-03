@@ -34,5 +34,10 @@ tasks.withType<Test> {
 }
 
 openApiGenerate {
-	apiPackage = "com.micro.graphs.controllers"
+	generatorName.set("spring")
+	inputSpec.set("$rootDir/../openapi/openapispec.yml")
+	outputDir.set("$rootDir/build/generated/api")
+	apiPackage.set("com.micro.controllers")
+	modelPackage.set("com.micro.nodes")
+	invokerPackage.set("com.micro.controllers")
 }
