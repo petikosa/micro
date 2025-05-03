@@ -13,7 +13,7 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public Account findByAccountNumber(String accountNumber) {
+    public Account findByAccountNumber(int accountNumber) {
         return accountRepository.findByAccountNumber(accountNumber);
     }
 }

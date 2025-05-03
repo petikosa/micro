@@ -36,10 +36,10 @@ class GraphsApplicationTests {
             session.executeWrite(tx -> {
                 tx.run("MATCH (n) DETACH DELETE n");
                 tx.run("""
-						CREATE (a1:Account {accountNumber: "1"})
-						CREATE (a2:Account {accountNumber: "2"})
-						CREATE (a3:Account {accountNumber: "3"})
-						CREATE (a4:Account {accountNumber: "4"})
+						CREATE (a1:Account {accountNumber: 1})
+						CREATE (a2:Account {accountNumber: 2})
+						CREATE (a3:Account {accountNumber: 3})
+						CREATE (a4:Account {accountNumber: 4})
 						CREATE (a1)-[:PERFORMS]->(:TRANSACTION {amount: 1000, currency: "gbp", date: datetime()-duration({days: 3})})-[:BENEFITS_TO]->(a2)
 						CREATE (a2)-[:PERFORMS]->(:TRANSACTION {amount: 900, currency: "gbp", date: datetime()-duration({days: 2})})-[:BENEFITS_TO]->(a3)
 						CREATE (a3)-[:PERFORMS]->(:TRANSACTION {amount: 810, currency: "gbp", date: datetime()-duration({days: 1})})-[:BENEFITS_TO]->(a4)
@@ -52,8 +52,8 @@ class GraphsApplicationTests {
 
     @Test
     void findAccountByAccountNumber(@Autowired AccountService accountService) {
-        assertThat(accountService.findByAccountNumber("1"))
-                .extracting(a -> a.getAccountNumber().contains("1"));
+        assertThat(accountService.findByAccountNumber(1))
+                .extracting(a -> a.getAccountNumber()).isEqualTo(1);
     }
 
     private static String env(String name, String defaultValue) {

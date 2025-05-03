@@ -14,7 +14,7 @@ public class Account {
     @GeneratedValue
     private Long id;
 
-    private String accountNumber;
+    private int accountNumber;
 
     @Relationship(type = "PERFORMS", direction = Relationship.Direction.OUTGOING)
     private Transaction transaction;
@@ -27,11 +27,11 @@ public class Account {
         this.id = id;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 

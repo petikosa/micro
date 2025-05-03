@@ -5,7 +5,8 @@ import com.micro.graphs.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-@RestController("/graphs")
+@RestController
+@RequestMapping("/graphs")
 public class AccountController {
 
     private final AccountService accountService;
@@ -15,7 +16,7 @@ public class AccountController {
     }
 
     @GetMapping(value = "/accountNumber/{accountNumber}")
-    public Mono<Account> getAccount(@PathVariable("accountNumber") String accountNumber) {
+    public Mono<Account> getAccount(@PathVariable("accountNumber") int accountNumber) {
         return Mono.just(accountService.findByAccountNumber(accountNumber));
     }
 

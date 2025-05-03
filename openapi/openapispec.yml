@@ -16,7 +16,7 @@ paths:
         description: accountNumber
         required: true
         schema:
-          type: string
+          type: integer
     get:
       summary: simple test get
       tags:
@@ -39,4 +39,4 @@ components:
         id:
           type: integer
         accountNumber:
-          type: string
+          type: integer
