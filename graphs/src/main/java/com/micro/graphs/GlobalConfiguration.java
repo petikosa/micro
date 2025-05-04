@@ -1,18 +1,20 @@
 package com.micro.graphs;
 
+import org.neo4j.driver.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.neo4j.core.ReactiveDatabaseSelectionProvider;
+import org.springframework.data.neo4j.core.transaction.ReactiveNeo4jTransactionManager;
+import org.springframework.data.neo4j.repository.config.ReactiveNeo4jRepositoryConfigurationExtension;
+import org.springframework.transaction.ReactiveTransactionManager;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import org.springframework.web.reactive.config.CorsRegistry;
-import org.springframework.web.reactive.config.EnableWebFlux;
-import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 import java.util.Arrays;
 
 @Configuration
-public class CorsGlobalConfiguration {
+public class GlobalConfiguration {
 
     @Bean
     CorsWebFilter corsWebFilter() {
@@ -29,4 +31,12 @@ public class CorsGlobalConfiguration {
 
         return new CorsWebFilter(source);
     }
+
+//    @Bean(ReactiveNeo4jRepositoryConfigurationExtension.DEFAULT_TRANSACTION_MANAGER_BEAN_NAME)
+//    public ReactiveTransactionManager reactiveTransactionManager(
+//            Driver driver,
+//            ReactiveDatabaseSelectionProvider databaseNameProvider) {
+//        return new ReactiveNeo4jTransactionManager(driver, databaseNameProvider);
+//    }
+
 }

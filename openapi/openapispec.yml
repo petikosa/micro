@@ -5,10 +5,25 @@ info:
   version: 0.0.1
 
 servers:
-  - url: http://localhost:4200
+  - url: http://localhost:8080
     description: development local server
 
 paths:
+  /graphs/findAll:
+    get:
+      summary: get all the graph
+      tags:
+        - graphs
+      description: get it all
+      operationId: findAllCustom
+      responses:
+        "200":
+          description: return all the graph
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Graph"
+
   /graphs/accountNumber/{accountNumber}:
     parameters:
       - name: accountNumber
@@ -40,3 +55,25 @@ components:
           type: integer
         accountNumber:
           type: integer
+    Graph:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+
+        relationships:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              from:
+                type: integer
+              to:
+                type: integer

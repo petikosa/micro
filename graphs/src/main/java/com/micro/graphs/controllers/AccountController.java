@@ -3,7 +3,10 @@ package com.micro.graphs.controllers;
 import com.micro.graphs.nodes.Account;
 import com.micro.graphs.services.AccountService;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/graphs")
@@ -20,8 +23,9 @@ public class AccountController {
         return Mono.just(accountService.findByAccountNumber(accountNumber));
     }
 
-    @GetMapping("/")
-    public Mono<String> getTest() {
-        return Mono.just("Test");
+    @GetMapping(value = "/findAll")
+    public Graph findAllCustom() {
+        return accountService.findAllCustom();
     }
+
 }
