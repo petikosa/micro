@@ -17,6 +17,12 @@ public class Account {
     @Relationship(type = "PERFORMS", direction = Relationship.Direction.OUTGOING)
     private Transaction transaction;
 
+    private String label = "ACCOUNT";
+
+    public String getLabel() {
+        return label;
+    }
+
     public Long getId() {
         return id;
     }

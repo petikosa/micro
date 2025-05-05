@@ -15,10 +15,17 @@ public class Transaction {
     private Long id;
 
     private int amount;
+    
     private ZonedDateTime date;
+
+    private String label = "TRANSACTION";
 
 //    @Relationship(type = "BENEFITS_TO", direction = Relationship.Direction.OUTGOING)
 //    private Account account;
+
+    public String getLabel() {
+        return label;
+    }
 
     public Long getId() {
         return id;

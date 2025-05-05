@@ -65,6 +65,8 @@ components:
             properties:
               id:
                 type: integer
+              label:
+                type: string
 
         relationships:
           type: array
